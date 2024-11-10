@@ -28,6 +28,10 @@ localhost:3000/analytics
 
 127.0.0.1:3000/analytics
 ```
+## ! Warning
+
+Graph view of the page hasn't been implemented yet. So nothing will show currently for "Request per Day" section
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
@@ -35,4 +39,3 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting in the ServerMonitor project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/Cwjiee/event_monitor/blob/main/CODE_OF_CONDUCT.md).
-
