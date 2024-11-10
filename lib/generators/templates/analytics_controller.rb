@@ -16,7 +16,7 @@ class AnalyticsController < ApplicationController
   end
 
   def process_raw_analytics
-    request_count = @analytics.count
+    @request_count = @analytics.count
     total_request_per_day = @analytics.where(updated_at: (Time.now - 1.day)..Time.now).pluck(:updated_at).count
 
     average_response_time = get_average("time_spent")
@@ -31,7 +31,7 @@ class AnalyticsController < ApplicationController
 
     @analytics_json = {
       analytics: @analytics,
-      request_count: request_count,
+      request_count: @request_count,
       total_request_per_day: total_request_per_day,
       average_response_time: average_response_time,
       most_frequent_request: most_frequent_request,
@@ -45,6 +45,8 @@ class AnalyticsController < ApplicationController
   end
 
   def get_most_frequent(data)
+    return "None" if no_request
+
     all_request = @analytics.map(&:analytics_data).pluck(data)
     all_request.detect { |r| all_request.count(r) > 1 }
 
@@ -53,7 +55,13 @@ class AnalyticsController < ApplicationController
   end
 
   def get_average(data)
+    return 0.00 if no_request
+
     all_data = @analytics.map(&:analytics_data).pluck(data)
     (all_data.sum / @analytics.count).truncate(3)
+  end
+
+  def no_request
+    @request_count == 0
   end
 end
