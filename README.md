@@ -7,7 +7,7 @@ This gem traces server requests and responses and stores the traced logs into th
 Install the gem and add to the application's Gemfile by executing:
 
 ```
-bundle add server_monitor
+bundle add rails_server_analytics
 ```
 
 ## Usage
