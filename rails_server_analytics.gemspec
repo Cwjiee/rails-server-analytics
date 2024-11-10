@@ -7,12 +7,14 @@ Gem::Specification.new do |spec|
   spec.version = RailsServerAnalytics::VERSION
   spec.authors = ["Chong Wei Jie"]
   spec.email = ["jackchong398@gmail.com"]
+  spec.homepage    = 'https://github.com/Cwjiee/rails-server-analytics'
 
   spec.summary = "A middleware to trace and montior requests and responses in rails"
   spec.description = "a gem that applies a custom middleware in a rails application for tracing requests and generates an analytics page for monitoring."
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.0.0"
 
+  spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/Cwjiee/rails-server-analytics"
 
   spec.files = Dir["lib/**/*"]
