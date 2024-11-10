@@ -16,6 +16,7 @@ Gem::Specification.new do |spec|
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/Cwjiee/rails-server-analytics"
+  spec.metadata["changelog_uri"] = "https://github.com/Cwjiee/rails-server-analytics/CHANGELOG.md"
 
   spec.files = Dir["lib/**/*"]
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
