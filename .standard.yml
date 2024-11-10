@@ -1,3 +1,8 @@
 # For available configuration options, see:
 #   https://github.com/standardrb/standard
 ruby_version: 3.0
+
+fix: true
+ignore:
+  - 'lib/rails_server_analytics/log_middleware.rb'
+  - 'lib/rails_server_analytics/analytics_tracer.rb'

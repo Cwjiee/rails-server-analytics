@@ -11,4 +11,3 @@ module RailsServerAnalytics
     end
   end
 end
-
