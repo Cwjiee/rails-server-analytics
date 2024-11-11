@@ -9,14 +9,18 @@ Gem::Specification.new do |spec|
   spec.email = ["jackchong398@gmail.com"]
   spec.homepage    = 'https://github.com/Cwjiee/rails-server-analytics'
 
-  spec.summary = "A middleware to trace and montior requests and responses in rails"
-  spec.description = "a gem that applies a custom middleware in a rails application for tracing requests and generates an analytics page for monitoring."
+  spec.summary = "A rails gem that shows your rails application metrics and analytics in a dashboard view"
+  spec.description = <<~EOH
+    A rails gem that shows your rails application metrics and analytics in a dashboard view.
+    The gem applies a middleware to your rails application to trace requests and responses from your server, then pushes it to the database.
+    Raw data stored will then be processed and show in an analytical view on your localhost.
+  EOH
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.0.0"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/Cwjiee/rails-server-analytics"
-  spec.metadata["changelog_uri"] = "https://github.com/Cwjiee/rails-server-analytics/CHANGELOG.md"
+  spec.metadata["changelog_uri"] = "https://github.com/Cwjiee/rails-server-analytics/blob/main/CHANGELOG.md"
 
   spec.files = Dir["lib/**/*"]
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }

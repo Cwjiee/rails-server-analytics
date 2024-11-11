@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+rm -rf *.gem
+gem build rails_server_analytics.gemspec
+
+bundle install
