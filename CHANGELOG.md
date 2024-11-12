@@ -9,3 +9,9 @@
 ## Docs:
 
 * Rewrote summary and description for gem.
+
+# 0.1.3 (2024-11-12)
+
+## Feat:
+
+* Add pie chart view for request method distribution.
