@@ -155,28 +155,10 @@
     </div>
   </div>
 
-  <!-- Chart Card -->
-  <div class="chart-container card">
-    <h2>Requests per Day</h2>
-    <div class="chart">
-      <%% 
-          # You would need to implement chart rendering here
-        # You could use Chart.js or any other JavaScript charting library
-        # For now, we'll show the data in a table format
-      %>
-    <table style="width: 100%; border-collapse: collapse;">
-      <thead>
-        <tr>
-          <th style="text-align: left; padding: 8px; border-bottom: 1px solid #ddd;">Date</th>
-          <th style="text-align: right; padding: 8px; border-bottom: 1px solid #ddd;">Requests</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><%% @analytics_json[:total_request_per_day] %></td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="card">
+    <h3>Request Methods Distribution</h3>
+    <div class="chart-container">
+      <canvas id="methodChart"></canvas>
     </div>
   </div>
 
@@ -202,11 +184,47 @@
   </div>
 </div>
 
-<%% if @analytics_json[:auto_refresh] %>
-  <script>
-    setTimeout(function() {
-      window.location.reload();
-    }, 5000);
-  </script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const analyticsData = <%%= raw @analytics.to_json %>;
+  const methodCounts = analyticsData.reduce((acc, curr) => {
+    const method = curr.analytics_data.request_method.toUpperCase();
+    acc[method] = (acc[method] || 0) + 1;
+    return acc;
+  }, {});
+
+  const methodChartCtx = document.getElementById('methodChart').getContext('2d');
+  new Chart(methodChartCtx, {
+    type: 'doughnut',
+    data: {
+      labels: Object.keys(methodCounts),
+      datasets: [{
+        data: Object.values(methodCounts),
+        backgroundColor: [
+          '#22c55e',  // GET
+          '#3b82f6',  // POST
+          '#f59e0b',  // PUT
+          '#ef4444'   // DELETE
+        ]
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'right'
+        }
+      }
+    }
+  });
+
+  <%% if @analytics_json[:auto_refresh] %>
+      setTimeout(function() {
+        window.location.reload();
+      }, 5000);
 <%% end %>
+</script>
+
 
